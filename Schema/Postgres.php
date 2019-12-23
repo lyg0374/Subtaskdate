@@ -9,4 +9,5 @@ const VERSION = 1;
 function version_1(PDO $pdo)
 {
     $pdo->exec("ALTER TABLE subtasks ADD COLUMN due_date INT DEFAULT '0'");
+    $pdo->exec("ALTER TABLE subtasks ADD COLUMN due_date VARCHAR DEFAULT NULL");
 }

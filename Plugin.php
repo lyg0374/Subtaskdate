@@ -6,6 +6,7 @@ use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
 use Kanboard\Model\TaskModel;
 use Kanboard\Plugin\Subtaskdate\Filter\SubTaskDueDateFilter;
+use Kanboard\Plugin\Subtaskdate\Filter\SubTaskCategoryFilter;
 use Kanboard\Model\SubtaskModel;
 use Kanboard\Plugin\Subtaskdate\Model\SubtaskCalendarModel;
 use Kanboard\Plugin\Subtaskdate\Api\Procedure\NewSubtaskProcedure;
@@ -22,7 +23,7 @@ class Plugin extends Base
         $this->container->extend('taskLexer', function ($taskLexer, $c) {
             $taskLexer->withFilter(SubTaskDueDateFilter::getInstance()->setDatabase($c['db'])
                 ->setDateParser($c['dateParser']));
-//            $taskLexer->withFilter(SubTaskCategoryFilter::getInstance()->setDatabase($c['db']));
+            $taskLexer->withFilter(SubTaskCategoryFilter::getInstance()->setDatabase($c['db']));
             return $taskLexer;
         });
 

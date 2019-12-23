@@ -3,7 +3,7 @@
 namespace Kanboard\Plugin\Subtaskdate\Filter;
 
 use Kanboard\Core\Filter\FilterInterface;
-use Kanboard\Filter\BaseDateFilter;
+use Kanboard\Filter\BaseFilter;
 use Kanboard\Model\SubtaskModel;
 use Kanboard\Model\TaskModel;
 use PicoDb\Table;
@@ -15,7 +15,7 @@ use PicoDb\Database;
  * @package filter
  * @author  Craig Crosby
  */
-class SubTaskDueDateFilter extends BaseFilter implements FilterInterface
+class SubTaskCategoryFilter extends BaseFilter implements FilterInterface
 {
     const TABLE = 'subtasks';
     /**
@@ -68,7 +68,7 @@ class SubTaskDueDateFilter extends BaseFilter implements FilterInterface
                 ->table(self::TABLE)
                 ->neq('category_subtask', '')
                 ->notNull('category_subtask')
-                ->eq('category_subtask', value)
+                ->eq('category_subtask', $this->value)
                 ->findAllByColumn('task_id');
         }
         if (isset($subtasks) && !empty($subtasks)) {
