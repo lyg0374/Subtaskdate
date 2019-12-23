@@ -1,6 +1,7 @@
 <?= $this->form->date(t('Due Date'), 'due_date', $values + array('due_date' => 0), $errors); ?>
 <label for="category_subtask">子任务分类</label>
 <select name='category_subtask' tabindex="2" id="category_subtask">
+    <option value="">未分类</option>
     <option value="PO">业务属主</option>
     <option value="PM">产品经理</option>
     <option value="UE">UE</option>
